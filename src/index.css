@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+
+/* Custom Navigation Buttons */
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: orangered; /* Custom background */
+  color: white;
+  width: 35px; /* Explicit width */
+  height: 35px; /* Explicit height */
+  padding: 0; /* Remove extra padding */
+  border-radius: 50%;
+  border: 1px solid white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: transparent; /* Hover color */
+}
+
+/* Position */
+.custom-prev {
+  left: 30px;
+}
+
+.custom-next {
+  right: 30px;
+}
