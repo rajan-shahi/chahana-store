@@ -60,7 +60,7 @@ export default function Footer() {
 
         {/* social media */}
         <div className=" md:flex md:justify-between    pt-5 px-5">
-          <div className=" flex justify-center items-center gap-5">
+          <div className=" flex md:justify-center md:items-center gap-5">
             <p className="capitalize pb-2">follow us</p>
             {/* social icons */}
             <div className="flex items-center gap-2">
