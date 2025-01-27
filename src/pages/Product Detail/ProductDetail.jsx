@@ -74,10 +74,10 @@ export default function ProductDetail({ addToCart }) {
       <div className="container mx-auto px-4 py-8">
         <Link
           to={"/"}
-          className="px-3 py-2 rounded-md bg-primary-250 ml-5 my-5 text-white text-base flex items-center w-fit gap-2"
+          className="px-3 py-1 rounded-md bg-primary-250  hover:bg-primary-300 duration-500 text-sm ml-5 my-5 text-white  flex items-center w-fit gap-2"
         >
           <span>
-            <BsArrowLeftShort size={25} />
+            <BsArrowLeftShort size={20} />
           </span>
           Back
         </Link>
@@ -199,14 +199,14 @@ export default function ProductDetail({ addToCart }) {
             <div className="buttons my-8 flex gap-5">
               <button
                 type="button"
-                className="hover:bg-primary-450 bg-primary-350 duration-300 text-white border-primary-350 bordertext-white px-4 py-1.5 rounded-md"
+                className="hover:bg-primary-450 text-sm bg-primary-350 duration-300 text-white border-primary-350 bordertext-white px-4 py-1.5 rounded-md"
                 onClick={handleAddToCart}
               >
                 Add to Cart
               </button>
               <button
                 type="button"
-                className="hover:bg-indigo-950 bg-indigo-800 duration-300 border-indigo-950 border text-white px-4 py-1.5 rounded-md"
+                className="hover:bg-indigo-950 text-sm bg-indigo-800 duration-300 border-indigo-950 border text-white px-4 py-1.5 rounded-md"
               >
                 Buy Now
               </button>
