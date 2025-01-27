@@ -59,20 +59,20 @@ export default function Footer() {
         </div>
 
         {/* social media */}
-        <div className=" md:flex justify-between    pt-5 px-5">
+        <div className=" md:flex md:justify-between    pt-5 px-5">
           <div className=" flex justify-center items-center gap-5">
             <p className="capitalize pb-2">follow us</p>
             {/* social icons */}
             <div className="flex items-center gap-2">
               <span className="py-1  cursor-pointer">
-                <FaFacebook size={20} className="text-blue-500" />
+                <FaFacebook size={20} className=" text-yellow-700" />
               </span>
               <span className="py-1  cursor-pointer">
-                <FaInstagram size={20} className="text-indigo-800" />
+                <FaInstagram size={20} className=" text-yellow-700" />
               </span>
             </div>
           </div>
-          <div> @2025 Develop And Design by Rajan Shahi</div>
+          <div > @2025 Develop And Design by Rajan Shahi</div>
         </div>
       </div>
     </>

@@ -1,19 +1,20 @@
-import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router"; // Fixed typo with 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router"; // Ensure `react-router-dom` is used
 import { IoSearchOutline } from "react-icons/io5";
 import { BsCart2 } from "react-icons/bs";
-import logo from "../assets/logo.svg"; // Update the path as necessary
+import logo from "../assets/logo.svg"; // Update this path as needed
 
 export default function Header({ cartCount, user }) {
   const location = useLocation();
+  const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Scroll to top on route change
   }, [location.pathname]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement search logic here
+    // Implement search logic here (e.g., trigger search API)
   };
 
   const userInitials = user?.name
@@ -23,11 +24,22 @@ export default function Header({ cartCount, user }) {
         .join("")
     : "CH";
 
+  const categories = [
+    { name: "Clothing", items: ["Jeans", "T-Shirts", "Jackets", "Sweaters"] },
+    { name: "Accessories", items: ["Bags", "Belts", "Sunglasses", "Watches"] },
+    {
+      name: "Electronics",
+      items: ["Laptops", "Smartphones", "Smartwatches", "Headphones"],
+    },
+    { name: "Footwear", items: ["Shoes", "Sneakers", "Boots", "Sandals"] },
+  ];
+
   return (
-    <div className="w-full bg-white sticky top-0 shadow-md md:px-0 px-5 z-50 backdrop-blur">
-      <div className=" md:w-11/12 mx-auto flex justify-between items-center py-3">
+    <div className="w-full bg-white sticky top-0 shadow-md z-50 backdrop-blur">
+      {/* Main Header */}
+      <div className="md:w-11/12 mx-auto flex justify-between items-center py-3 px-5">
         {/* Logo */}
-        <Link to="/">
+        <Link to="/" aria-label="Home">
           <img
             className="md:w-[220px] sm:w-[180px] w-[130px]"
             src={logo}
@@ -37,8 +49,9 @@ export default function Header({ cartCount, user }) {
 
         {/* Search Bar */}
         <form
-          className="w-3/6 rounded-full border border-primary-300 px-4 gap-5 py-1 h-8 md:flex hidden"
+          className="hidden md:flex w-3/6 rounded-full border border-primary-300 px-4 gap-5 py-1 h-8"
           onSubmit={handleSubmit}
+          role="search"
         >
           <label htmlFor="search" className="sr-only">
             Search
@@ -52,13 +65,15 @@ export default function Header({ cartCount, user }) {
           <button
             className="w-6 h-6 bg-primary-100 text-primary-400 font-semibold rounded-full flex items-center justify-center"
             type="submit"
+            aria-label="Search"
           >
             <IoSearchOutline size={15} />
           </button>
         </form>
 
         {/* User Actions */}
-        <div className="flex items-center gap-2 lg:gap-3">
+        <div className="flex items-center gap-3">
+          {/* Profile */}
           <Link
             to="/profile"
             className="bg-primary-100 rounded-full p-1 text-secondary-500 text-[10px] text-center"
@@ -66,14 +81,16 @@ export default function Header({ cartCount, user }) {
           >
             {userInitials}
           </Link>
+
+          {/* Cart */}
           <Link
             to="/cart"
-            className="relative md:px-3 py-1 rounded-xl bg-transparent hover:bg-primary-50 duration-150 transition-colors"
+            className="relative px-3 py-1 rounded-xl hover:bg-primary-50 transition-colors"
             title="Cart"
           >
             <BsCart2 size={18} />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-2 md:right-1 bg-primary-100 text-primary-300 text-xs font-semibold rounded-full px-1.5">
+              <span className="absolute -top-1 -right-2 bg-primary-100 text-primary-300 text-xs font-semibold rounded-full px-1.5">
                 {cartCount}
               </span>
             )}
@@ -81,33 +98,52 @@ export default function Header({ cartCount, user }) {
         </div>
       </div>
 
-      {/* Horizontal Line */}
-      <span className="border-b mt-2 container mx-auto flex"></span>
+      {/* Horizontal Divider */}
+      <hr className="border-b mt-2" />
 
-      {/* Secondary Menu */}
-      <div className="md:flex hidden justify-center text-xs gap-5 pt-2 pb-3">
-        {[
-          "Jeans",
-          "Bags",
-          "Glasses",
-          "Shoes",
-          "Smartphone",
-          "Laptops",
-          "Smartwatch",
-        ].map((item) => (
-          <Link
-            to={`/${item.toLowerCase()}`}
-            key={item}
-            className={`hover:bg-primary-150 px-1.5 py-1 relative  ${
-              location.pathname.includes(item.toLowerCase())
-                ? "font-semibold bg-primary-200 text-indigo-900 rounded-sm "
-                : ""
-            }`}
+      {/* Categories with Hover Dropdown */}
+      <nav className="hidden md:flex justify-center text-sm gap-8 pt-2 pb-3 relative">
+        {categories.map((category, index) => (
+          <div
+            key={index}
+            className="relative group"
+            onMouseEnter={() => setActiveCategory(index)}
+            onMouseLeave={() => setActiveCategory(null)}
           >
-            {item}
-          </Link>
+            {/* Main Category */}
+            <span
+              className={`cursor-pointer font-medium px-2 py-1 hover:text-primary-500 ${
+                location.pathname.includes(category.name.toLowerCase())
+                  ? "text-primary-700"
+                  : "text-gray-700"
+              }`}
+            >
+              {category.name}
+            </span>
+
+            {/* Dropdown Items */}
+            <div
+              className={`absolute left-0 mt-2 bg-white shadow-lg rounded-md w-48 p-2 flex flex-col gap-1 transform scale-0 group-hover:scale-100 transition-transform origin-top`}
+              role="menu"
+            >
+              {category.items.map((item) => (
+                <Link
+                  to={`/${item.toLowerCase()}`}
+                  key={item}
+                  className={`hover:bg-primary-100 px-3 py-2 rounded text-gray-700 hover:text-primary-600 ${
+                    location.pathname.includes(item.toLowerCase())
+                      ? "bg-primary-200 text-indigo-900 font-semibold"
+                      : ""
+                  }`}
+                  role="menuitem"
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </div>
         ))}
-      </div>
+      </nav>
     </div>
   );
 }
