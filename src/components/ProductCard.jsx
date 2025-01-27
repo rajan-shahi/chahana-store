@@ -5,7 +5,6 @@ import { TiStar } from "react-icons/ti";
 // import ProductData from "../data/ProductData";
 
 const ProductCard = ({ items, addToCart, onClick }) => {
-
   if (!items) return null; // to avoid rendering errors when no data is passed.
   return (
     <article className="card flex flex-col border rounded-xl bg-white relative shadow-md pb-1 group md:mx-0 mx-5">
@@ -39,7 +38,6 @@ const ProductCard = ({ items, addToCart, onClick }) => {
           {items.title}
         </h2>
         <div className="flex items-center justify-between">
-          
           {/* if kunae items haru payen vane */}
           <p className="text-xs text-gray-600 flex items-center gap-1">
             <TiStar className="text-primary-250" size={18} />
@@ -53,7 +51,7 @@ const ProductCard = ({ items, addToCart, onClick }) => {
             <span className="text-sm font-semibold"> Rs. {items.price}</span>
           </p>
         </div>
-        <div className="flex md:justify-between justify-around items-center gap-2 mt-2">
+        <div className="flex justify-between  items-center gap-2 mt-2">
           <button
             onClick={() => addToCart(items)}
             type="button"
@@ -63,7 +61,7 @@ const ProductCard = ({ items, addToCart, onClick }) => {
           </button>
           <button
             type="button"
-            className="text-sm w-7/12 bg-primary-350 text-white rounded-full py-2 shadow-md"
+            className="text-sm  px-5 bg-primary-350 hover:bg-primary-250 text-white rounded-md py-1 shadow-md"
           >
             Buy Now
           </button>
