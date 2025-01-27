@@ -7,14 +7,14 @@ import { TiStar } from "react-icons/ti";
 const ProductCard = ({ items, addToCart, onClick }) => {
   if (!items) return null; // to avoid rendering errors when no data is passed.
   return (
-    <article className="card flex flex-col border rounded-xl bg-white relative shadow-md pb-1 group md:mx-0 mx-5">
+    <article className="card flex flex-col border rounded-xl bg-white relative shadow-md pb-1 group md:mx-0 mx-5  group">
       {/* img container */}
       <div className="card-img  h-[170px] rounded-t-xl relative overflow-hidden">
         <img
           loading="lazy"
           src={items.images}
           alt={items.title || "product image"}
-          className="object-contain w-full h-full relative cursor-pointer px-2 pt-2"
+          className="object-contain w-full h-full relative cursor-pointer px-2 pt-2 group-hover:scale-105 duration-500"
           onClick={() => onClick(items)}
         />
 
