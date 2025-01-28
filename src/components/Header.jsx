@@ -31,7 +31,7 @@ export default function Header({ cartCount, user }) {
       name: "Electronics",
       items: ["Laptops", "Smartphones", "Smartwatches", "Headphones"],
     },
-    { name: "Footwear", items: ["Shoes", "Sneakers", "Boots", "Sandals"] },
+    { name: "Footwear", items: ["Shoes", "Sneakers", "Boots", "Sandals "] },
   ];
 
   return (

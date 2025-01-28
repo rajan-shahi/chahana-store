@@ -68,7 +68,6 @@ export default function ProductDetail({ addToCart }) {
     setSelectedSize(size);
   };
 
-
   return (
     <div className="bg-gray-100">
       <div className="container mx-auto px-4 py-8">
@@ -203,12 +202,6 @@ export default function ProductDetail({ addToCart }) {
                 onClick={handleAddToCart}
               >
                 Add to Cart
-              </button>
-              <button
-                type="button"
-                className="hover:bg-indigo-950 text-sm bg-indigo-800 duration-300 border-indigo-950 border text-white px-4 py-1.5 rounded-md"
-              >
-                Buy Now
               </button>
             </div>
           </div>
