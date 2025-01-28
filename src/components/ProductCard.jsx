@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BsCart2 } from "react-icons/bs";
 import { TiStar } from "react-icons/ti";
+import { Link } from "react-router";
 // import { IoIosHeartEmpty } from "react-icons/io";
 // import ProductData from "../data/ProductData";
 
@@ -59,12 +60,13 @@ const ProductCard = ({ items, addToCart, onClick }) => {
           >
             <BsCart2 size={20} className="text-black drop-shadow-md" />
           </button>
-          <button
+          <Link
+            to="/buy"
             type="button"
             className="text-sm  px-5 bg-primary-350 hover:bg-primary-250 text-white rounded-md py-1 shadow-md"
           >
             Buy Now
-          </button>
+          </Link>
         </div>
       </div>
     </article>

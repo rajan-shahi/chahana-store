@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Profile from "./pages/Profile";
 import Wishlist from "./pages/Wishlist";
 import ProductDetail from "./pages/Product Detail/ProductDetail";
 import StoreProfile from "./pages/StoreProfile";
@@ -15,8 +14,8 @@ import Shoes from "./pages/category page/Shoes";
 import SmartPhone from "./pages/category page/SmartPhone";
 import SmartWatch from "./pages/category page/SmartWatch";
 import Laptops from "./pages/category page/Laptops";
-import ScrollToTop from "./components/ScrollToTop";
 import toast, { Toaster } from "react-hot-toast";
+import Buy from "./pages/Buy";
 
 export default function App() {
   const [cart, setCart] = useState([]);
@@ -34,10 +33,10 @@ export default function App() {
     <>
       <BrowserRouter>
         <Header cartCount={cart.length} />
-        <ScrollToTop />
+
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
-          <Route path="/profile" element={<Profile />} />
+
           <Route path="/wishlist" element={<Wishlist />} />
           <Route
             path="/product-detail"
@@ -61,6 +60,7 @@ export default function App() {
             path="/smartwatch"
             element={<SmartWatch addToCart={addToCart} />}
           />
+          <Route path="/buy" element={<Buy />} />
         </Routes>
 
         <Footer />

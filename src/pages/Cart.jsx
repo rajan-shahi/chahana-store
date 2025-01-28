@@ -139,9 +139,9 @@ export default function Cart({ cartItems: initialCartItems, removeFromCart }) {
 
             <Link
               to={"/"}
-              className="flex font-semibold bg-primary-350 text-white p-3 w-fit rounded-sm text-sm mt-10 items-center gap-2"
+              className="flex font-semibold bg-primary-350 text-white p-3 w-fit  text-xs mt-10 items-center gap-2 rounded-md hover:bg-primary-250 duration-500"
             >
-              <FaArrowLeftLong size={20} />
+              <FaArrowLeftLong size={15} />
               Continue Shopping
             </Link>
           </div>
@@ -190,7 +190,7 @@ export default function Cart({ cartItems: initialCartItems, removeFromCart }) {
                 className="p-2 text-sm w-full"
               />
             </div>
-            <button className="bg-primary-300 px-5 py-2 text-sm text-white uppercase">
+            <button className="bg-primary-300 px-5 py-2 text-sm text-white uppercase rounded-md">
               Apply
             </button>
             <div className="border-t mt-8">
@@ -198,7 +198,7 @@ export default function Cart({ cartItems: initialCartItems, removeFromCart }) {
                 <span>Total cost</span>
                 <span>Rs. {(totalCost + 100).toLocaleString()}</span>
               </div>
-              <button className="bg-primary-300 font-semibold py-3 text-sm text-white uppercase w-full">
+              <button className="bg-primary-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md g= hover:bg-primary-250 duration-500">
                 Checkout
               </button>
             </div>
