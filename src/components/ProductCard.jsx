@@ -1,9 +1,6 @@
 import { BsCart2 } from "react-icons/bs";
 import { TiStar } from "react-icons/ti";
 import { useNavigate } from "react-router";
-import { GiSelfLove } from "react-icons/gi";
-// import { IoIosHeartEmpty } from "react-icons/io";
-// import ProductData from "../data/ProductData";
 
 const ProductCard = ({ items, addToCart, onClick }) => {
   const navigate = useNavigate();
@@ -67,11 +64,11 @@ const ProductCard = ({ items, addToCart, onClick }) => {
               type="button"
               className="text-xs px-3 py-1"
             >
-              <BsCart2 size={22} className="text-black drop-shadow-md hover:text-primary-350 duration-500" />
+              <BsCart2
+                size={22}
+                className="text-black drop-shadow-md hover:text-primary-350 duration-500"
+              />
             </button>
-            <button>
-              <GiSelfLove size={20}  className="text-black drop-shadow-md  hover:text-primary-350 duration-500" />
-            </button>{" "}
           </div>
           <button
             onClick={() => handleBuyNow(items)}
