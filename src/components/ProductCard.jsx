@@ -1,6 +1,7 @@
 import { BsCart2 } from "react-icons/bs";
 import { TiStar } from "react-icons/ti";
 import { useNavigate } from "react-router";
+import { GiSelfLove } from "react-icons/gi";
 // import { IoIosHeartEmpty } from "react-icons/io";
 // import ProductData from "../data/ProductData";
 
@@ -60,13 +61,18 @@ const ProductCard = ({ items, addToCart, onClick }) => {
           </p>
         </div>
         <div className="flex justify-between  items-center gap-2 mt-2">
-          <button
-            onClick={() => addToCart(items)}
-            type="button"
-            className="text-xs px-3 py-1"
-          >
-            <BsCart2 size={20} className="text-black drop-shadow-md" />
-          </button>
+          <div className=" flex gap-2 justify-center items-center">
+            <button
+              onClick={() => addToCart(items)}
+              type="button"
+              className="text-xs px-3 py-1"
+            >
+              <BsCart2 size={22} className="text-black drop-shadow-md hover:text-primary-350 duration-500" />
+            </button>
+            <button>
+              <GiSelfLove size={20}  className="text-black drop-shadow-md  hover:text-primary-350 duration-500" />
+            </button>{" "}
+          </div>
           <button
             onClick={() => handleBuyNow(items)}
             className="text-sm px-5 bg-primary-350 hover:bg-primary-250 text-white rounded-md py-1 shadow-md"
